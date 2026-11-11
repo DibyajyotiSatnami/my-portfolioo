@@ -37,8 +37,8 @@ export const metadata: Metadata = {
     site.name,
   ],
   authors: [{ name: site.name }],
-  alternates: { canonical: "/" },
-  openGraph: { type: "website", title, description: site.description, url: "/", siteName: site.name },
+  alternates: { canonical: site.url },
+  openGraph: { type: "website", title, description: site.description, url: site.url, siteName: site.name },
   twitter: { card: "summary_large_image", title, description: site.description },
 };
 

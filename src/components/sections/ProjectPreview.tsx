@@ -33,7 +33,7 @@ export function ProjectPreview({ project, variant }: { project: Project; variant
           // eslint-disable-next-line @next/next/no-img-element
           <img
             className="preview-shot"
-            src={project.image}
+            src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${project.image}`}
             alt={`${project.title} website preview`}
             loading="lazy"
             decoding="async"

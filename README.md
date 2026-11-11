@@ -31,6 +31,17 @@ npm run dev
 npm run build
 ```
 
+## Deployment
+
+Every push to the default branch runs `.github/workflows/deploy.yml`, which
+exports the site as static files and publishes it to GitHub Pages at
+<https://dibyajyotisatnami.github.io/my-portfolioo/>. Pages must be switched on
+once under **Settings → Pages → Source: GitHub Actions**.
+
+The workflow sets `STATIC_EXPORT` and `NEXT_PUBLIC_BASE_PATH`; without them the
+project builds as a normal Next.js app, so it can also be imported into Vercel
+as is. If the site moves to another address, update `site.url`.
+
 ## Editing content
 
 Everything written on the site lives in **`src/content/site.ts`**:
@@ -38,7 +49,8 @@ Everything written on the site lives in **`src/content/site.ts`**:
 - `site.whatsappNumber` — your number in international format, digits only
   (for example `919876543210`). **It is empty by default**, so set it before
   launch.
-- `site.url` — the deployed address, used for canonical and Open Graph tags.
+- `site.url` — the deployed address, used for canonical and Open Graph tags
+  (currently the GitHub Pages address).
 - `projects` — **sample entries**. Replace each `title` and `url` with a real
   project. Add `image: "/work/name.jpg"` (a file in `public/work/`) to show a
   real screenshot; a tall full-page capture pans while the card is hovered.

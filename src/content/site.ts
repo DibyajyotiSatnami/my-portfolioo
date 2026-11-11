@@ -11,7 +11,7 @@ export const site = {
   description:
     "Dibyajyoti designs and builds fast, cinematic websites and grows them with Google Maps SEO, Meta Ads and performance marketing.",
   /** Public URL of the deployed site — used for canonical + Open Graph tags. */
-  url: "https://example.com",
+  url: "https://dibyajyotisatnami.github.io/my-portfolioo/",
   /**
    * WhatsApp number in international format, digits only (e.g. "919876543210").
    * While this is empty the CTA opens WhatsApp without a pre-selected chat.
