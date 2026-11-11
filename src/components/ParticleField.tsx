@@ -6,7 +6,7 @@ import { prefersReducedMotion } from "@/lib/gsap";
 type Particle = { x: number; y: number; vx: number; vy: number; r: number; phase: number; hue: number };
 
 /**
- * Lightweight 2D-canvas embers. Runs only while on screen, drifts away from
+ * Lightweight 2D-canvas sparks. Runs only while on screen, drifts away from
  * the pointer, and renders a single still frame under reduced motion.
  */
 export function ParticleField({ className }: { className?: string }) {
@@ -72,7 +72,7 @@ export function ParticleField({ className }: { className?: string }) {
         }
         const twinkle = 0.35 + 0.65 * Math.abs(Math.sin(time * 0.0012 + p.phase));
         ctx.globalAlpha = twinkle * 0.85;
-        ctx.fillStyle = p.hue > 0.66 ? "#ffae1a" : p.hue > 0.33 ? "#ff4d1f" : "#ece8e1";
+        ctx.fillStyle = p.hue > 0.66 ? "#e2ff4d" : p.hue > 0.33 ? "#7dff2e" : "#ece8e1";
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fill();

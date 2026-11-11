@@ -88,7 +88,7 @@ export function Contact() {
   );
 
   return (
-    <section ref={root} id="contact" className="contact" data-theme-section="ember" aria-labelledby="contact-title">
+    <section ref={root} id="contact" className="contact" data-theme-section="moss" aria-labelledby="contact-title">
       <div className="contact-bg" aria-hidden="true">
         <span className="contact-glow contact-glow--a" />
         <span className="contact-glow contact-glow--b" />

@@ -139,9 +139,9 @@ void main(){
 }
 `;
 
-const VERMILION = new THREE.Color("#ff4d1f");
+const NEON = new THREE.Color("#7dff2e");
 const VIOLET = new THREE.Color("#6d4bff");
-const AMBER = new THREE.Color("#ffae1a");
+const LIME = new THREE.Color("#e2ff4d");
 const BONE = new THREE.Color("#ece8e1");
 
 function glowSprite() {
@@ -215,9 +215,9 @@ export default function HeroScene({ ready }: { ready: boolean }) {
       uOpacity: { value: 1 },
       uLightA: { value: new THREE.Vector3(4, 3, 4) },
       uLightB: { value: new THREE.Vector3(-5, -2, 2) },
-      uColA: { value: VERMILION },
+      uColA: { value: NEON },
       uColB: { value: VIOLET },
-      uColC: { value: AMBER },
+      uColC: { value: LIME },
     };
     const coreGeometry = track(new THREE.IcosahedronGeometry(1, lowPower ? 18 : 40));
     const coreMaterial = track(
@@ -245,7 +245,7 @@ export default function HeroScene({ ready }: { ready: boolean }) {
     nodeGeometry.setAttribute("position", cageSource.getAttribute("position").clone());
     const nodeMaterial = track(
       new THREE.PointsMaterial({
-        color: AMBER,
+        color: LIME,
         size: 0.09,
         map: sprite,
         transparent: true,
@@ -271,7 +271,7 @@ export default function HeroScene({ ready }: { ready: boolean }) {
 
     /* ----- Lit floating solids ----- */
     scene.add(new THREE.AmbientLight(0xffffff, 0.9));
-    const warm = new THREE.PointLight(VERMILION, 260, 0, 2);
+    const warm = new THREE.PointLight(NEON, 260, 0, 2);
     warm.position.set(4, 3, 4);
     const cool = new THREE.PointLight(VIOLET, 300, 0, 2);
     cool.position.set(-5, -2, 3);

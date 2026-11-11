@@ -16,6 +16,12 @@
   inherits: true;
   initial-value: #ece8e1;
 }
+/* Accent for text and fine lines: neon on dark, deep green on light. */
+@property --accent-text {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #7dff2e;
+}
 @property --reveal {
   syntax: "<percentage>";
   inherits: false;
@@ -31,10 +37,12 @@
   --ink: #08080a;
   --surface: #0d0d11;
   --bone: #ece8e1;
-  --accent: #ff4d1f;
-  --amber: #ffae1a;
+  --accent: #7dff2e; /* neon green */
+  --accent-deep: #136b0b; /* readable on the light theme */
+  --accent-text: var(--accent);
+  --lime: #e2ff4d;
+  --mint: #2effa6;
   --violet: #6d4bff;
-  --whatsapp: #25d366;
 
   --bg: #08080a;
   --fg: #ece8e1;
@@ -45,7 +53,8 @@
 
   transition:
     --bg 0.9s var(--ease-out),
-    --fg 0.9s var(--ease-out);
+    --fg 0.9s var(--ease-out),
+    --accent-text 0.9s var(--ease-out);
 }
 
 html[data-theme="night"] {
@@ -57,9 +66,10 @@ html[data-theme="indigo"] {
 html[data-theme="bone"] {
   --bg: #ece8e1;
   --fg: #0b0b0e;
+  --accent-text: var(--accent-deep);
 }
-html[data-theme="ember"] {
-  --bg: #0b0706;
+html[data-theme="moss"] {
+  --bg: #050a06;
 }
 
 /* Derived colours must be re-declared wherever --fg is overridden. */
@@ -114,7 +124,7 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--accent-text);
   outline-offset: 4px;
   border-radius: 4px;
 }
@@ -177,11 +187,11 @@ section:focus {
 .text-gradient {
   background-image: linear-gradient(
     100deg,
-    var(--amber) 0%,
+    var(--lime) 0%,
     var(--accent) 28%,
-    #ff2e7e 52%,
-    var(--violet) 76%,
-    var(--amber) 100%
+    var(--mint) 52%,
+    var(--accent) 76%,
+    var(--lime) 100%
   );
   background-size: 300% 100%;
   -webkit-background-clip: text;
@@ -231,8 +241,8 @@ section:focus {
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 60%, transparent);
+  background: var(--accent-text);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent-text) 60%, transparent);
   animation: dot-pulse 2.2s ease-out infinite;
 }
 @keyframes dot-pulse {
@@ -701,6 +711,7 @@ html.has-cursor * {
 
 .menu {
   --fg: var(--ink);
+  --accent-text: var(--accent-deep);
   position: fixed;
   inset: 0;
   z-index: 55;
@@ -770,7 +781,7 @@ html.has-cursor * {
 .menu-link:hover .menu-link-text,
 .menu-link:focus-visible .menu-link-text {
   transform: translateX(clamp(0.6rem, 2vw, 2rem));
-  color: var(--accent);
+  color: var(--accent-text);
 }
 .menu-link:hover .menu-link-arrow,
 .menu-link:focus-visible .menu-link-arrow {
@@ -1874,10 +1885,14 @@ html.has-cursor * {
 }
 .svc-heading-accent {
   display: inline-block;
-  padding-right: 0.08em;
-  font-size: 1.08em;
-  line-height: 0.8;
-  color: var(--accent);
+  padding: 0.02em 0.16em 0.1em 0.1em;
+  border-radius: 0.12em;
+  font-size: 0.96em;
+  line-height: 0.86;
+  background: var(--accent);
+  color: var(--ink);
+  transform: rotate(-2deg);
+  box-shadow: 0 0 2.5rem -0.4rem color-mix(in srgb, var(--accent) 70%, transparent);
 }
 .svc-heading .mask-line:last-child {
   padding-bottom: 0.2em;
@@ -1913,7 +1928,7 @@ html.has-cursor * {
   text-align: left;
 }
 .svc-index {
-  color: var(--accent);
+  color: var(--accent-text);
 }
 .svc-title {
   font-size: clamp(2rem, 8.4vw, 3.4rem);
@@ -1975,7 +1990,7 @@ html.has-cursor * {
   .svc-arrow {
     display: block;
     font-size: 1.6rem;
-    color: var(--accent);
+    color: var(--accent-text);
     opacity: 0;
     transform: translateX(-1.2rem);
     transition:
@@ -2106,7 +2121,7 @@ html.has-cursor * {
   display: flex;
   flex-direction: column;
   min-height: 100svh;
-  background: #0b0706;
+  background: #050a06;
   color: var(--bone);
   overflow: hidden;
 }
@@ -2160,7 +2175,7 @@ html.has-cursor * {
   height: 30rem;
   margin: -15rem 0 0 -15rem;
   border-radius: 50%;
-  background: radial-gradient(circle, color-mix(in srgb, var(--amber) 16%, transparent), transparent 62%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--lime) 14%, transparent), transparent 62%);
 }
 .contact-particles {
   position: absolute;
@@ -2222,11 +2237,12 @@ html.has-cursor * {
   display: block;
   padding: clamp(1.3rem, 2.2vw, 1.9rem) clamp(1.8rem, 3.4vw, 3rem);
   border-radius: 999px;
-  background: var(--whatsapp);
+  background: var(--accent);
   color: #04200e;
   box-shadow:
-    0 0 0 1px rgb(255 255 255 / 0.15) inset,
-    0 1.2rem 4.5rem -0.8rem color-mix(in srgb, var(--whatsapp) 70%, transparent);
+    0 0 0 1px rgb(255 255 255 / 0.25) inset,
+    0 0 1.2rem color-mix(in srgb, var(--accent) 55%, transparent),
+    0 1.2rem 5rem -0.6rem color-mix(in srgb, var(--accent) 75%, transparent);
   transition:
     background-color 0.5s var(--ease-out),
     box-shadow 0.5s var(--ease-out);
@@ -2260,7 +2276,7 @@ html.has-cursor * {
   position: absolute;
   inset: 0;
   border-radius: 999px;
-  border: 1px solid var(--whatsapp);
+  border: 1px solid var(--accent);
   animation: wa-ring 2.8s ease-out infinite;
   pointer-events: none;
 }

@@ -5,8 +5,8 @@ import type { ServiceId } from "@/content/site";
 import { useVisual } from "./useVisual";
 
 const BONE = "#ece8e1";
-const ACCENT = "#ff4d1f";
-const AMBER = "#ffae1a";
+const ACCENT = "#7dff2e";
+const AMBER = "#e2ff4d";
 const VIOLET = "#6d4bff";
 
 type VisualProps = { active: boolean };
